@@ -21,7 +21,7 @@ def push(x,y,s):
 
 
 def bfs():
-    dxs, dys = [1,0], [0,1]
+    dxs, dys = [1,0,-1,0], [0,1,0,-1]
     while queue:
         x, y = queue.popleft()
 
