@@ -7,37 +7,32 @@ for i in range(n):
     tmp = list(map(int,input().split()))
     graph.append(tmp)
 ans = -1
-visited = [[-1]*(m) for _ in range(n)]
+visited = [ [False]*(m) for _ in range(n)]
+queue = deque()
 
-dx = [1,-1,0,0]
-dy = [0,0,1,-1]
+def in_range(x,y):
+    return 0<= x <n and 0<= y < m
 
-def bfs(r,c,cost):
-    queue = deque()
-    queue.append([r,c])
-    visited[r][c] = cost
-    past_cost = cost
+def push(x,y,s):
+    if graph[x][y] == 1:
+        graph[x][y] = s
+        visited[x][y] = True
+        queue.append([x,y])
+
+
+def bfs():
+    dxs, dys = [1,0], [0,1]
     while queue:
         x, y = queue.popleft()
 
-        for i in range(4):
-            
-            now_x = x + dx[i]
-            now_y = y + dy[i]
-            if 0<= now_x < n and 0<= now_y < m:
-                if visited[now_x][now_y] < 0 and graph[now_x][now_y] == 1:
-                    past_cost = 100
-                    for j in range(4):
-                        nn_x = now_x + dx[j]
-                        nn_y = now_y + dy[j]
-                        if 0<= nn_x < n and 0<= nn_y < m:
+        for dx, dy in zip(dxs, dys):
+            new_x, new_y = x + dx, y + dy
+            if in_range(new_x, new_y) and not visited[new_x][new_y] and graph[new_x][new_y] == 1:
+                push(new_x,new_y, graph[x][y] + 1)
 
-                            if visited[nn_x][nn_y] != -1 and past_cost > visited[nn_x][nn_y]:
-                                past_cost = visited[nn_x][nn_y]
-                    
-                    visited[now_x][now_y] = past_cost+1
-                    queue.append([now_x,now_y])
-
-bfs(0,0,0)
-
-print(visited[n-1][m-1])
+push(0,0,0)
+bfs()
+if visited[n-1][m-1]:
+    print(graph[n-1][m-1])
+else:
+    print(-1)
