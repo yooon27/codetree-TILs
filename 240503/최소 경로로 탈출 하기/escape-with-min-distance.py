@@ -7,7 +7,7 @@ for i in range(n):
     tmp = list(map(int,input().split()))
     graph.append(tmp)
 ans = -1
-visited = [[-1]*(n) for _ in range(n)]
+visited = [[-1]*(m) for _ in range(n)]
 
 dx = [1,-1,0,0]
 dy = [0,0,1,-1]
@@ -24,13 +24,13 @@ def bfs(r,c,cost):
             
             now_x = x + dx[i]
             now_y = y + dy[i]
-            if 0<= now_x < n and 0<= now_y < n:
+            if 0<= now_x < n and 0<= now_y < m:
                 if visited[now_x][now_y] < 0 and graph[now_x][now_y] == 1:
                     past_cost = 100
                     for j in range(4):
                         nn_x = now_x + dx[j]
                         nn_y = now_y + dy[j]
-                        if 0<= nn_x < n and 0<= nn_y < n:
+                        if 0<= nn_x < n and 0<= nn_y < m:
 
                             if visited[nn_x][nn_y] != -1 and past_cost > visited[nn_x][nn_y]:
                                 past_cost = visited[nn_x][nn_y]
@@ -40,4 +40,4 @@ def bfs(r,c,cost):
 
 bfs(0,0,0)
 
-print(visited[n-1][n-1])
+print(visited[n-1][m-1])
