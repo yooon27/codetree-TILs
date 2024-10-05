@@ -11,8 +11,6 @@ int main() {
     for(int i = 0 ; i < n ; i++){
         int tmp;
         cin >> tmp;
-        if(prev < 0) prev = tmp;
-
         if(prev == tmp) cnt += 1;
         else{
             ans = max(ans, cnt);
