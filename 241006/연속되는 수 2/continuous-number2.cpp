@@ -18,6 +18,7 @@ int main() {
         }
         prev = tmp;
     }
+    ans = max(ans,cnt);
     cout << ans;
     return 0;
 }
