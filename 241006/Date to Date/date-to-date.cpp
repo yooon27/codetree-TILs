@@ -7,7 +7,7 @@ int main() {
     cin >> m1 >> d1 >> m2 >> d2;
 
     if(m1 == m2){
-        cout << d2-d1;
+        cout << d2-d1+1;
         return 0;
     }
 
