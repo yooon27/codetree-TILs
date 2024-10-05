@@ -4,6 +4,7 @@ using namespace std;
 int main() {
     // 여기에 코드를 작성해주세요.
     int a, c, b ,d, ans, flag ;
+    flag = 0;
     cin >> a >> b >> c >> d;
     if(b > d){
         ans = d - b + 60;
@@ -15,6 +16,6 @@ int main() {
     else ans += (c-a) * 60;
 
     cout << ans;
-    
+
     return 0;
 }
