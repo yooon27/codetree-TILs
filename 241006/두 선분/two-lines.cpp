@@ -9,9 +9,11 @@ int main() {
         cout <<"intersecting";
         exit(0);
     }
-    if(x1 <= x4){
+    else{
+    if(x4 <= x1){
         cout <<"intersecting";
         exit(0);
+    }
     }
     cout << "nonintersecting";
     return 0;
