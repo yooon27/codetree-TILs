@@ -9,7 +9,7 @@ int main() {
         cout <<"intersecting";
         exit(0);
     }
-    if(x4 <= x1){
+    if(x1 <= x4){
         cout <<"intersecting";
         exit(0);
     }
